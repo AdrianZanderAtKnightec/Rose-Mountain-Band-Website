@@ -1,0 +1,93 @@
+﻿@model IEnumerable<RoseMountainBandWebsite.Models.Tour>
+
+@{
+    ViewData["Title"] = "Tour Page";
+}
+
+<!-- The Tour Section -->
+<div class="w3-black" id="tour" style="display: block;margin-left: auto;margin-right: auto;width: 40%;margin-top: 2%;margin-bottom: 2%">
+    <div class="w3-container w3-content w3-padding-64" style="max-width:100%;">
+        <h2 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">TOUR DATES</h2>
+        <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
+        
+        <!--
+        <ul class="w3-ul w3-border w3-white w3-text-grey">
+            <li class="w3-padding">September <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
+            <li class="w3-padding">October <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
+            <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>
+        </ul>
+        -->
+
+        <div class="w3-row-padding" style="display: table;">
+            <div class="w3-third w3-margin-bottom" style="display: table-cell;">
+                <img src="../Images/Tour Dates/Brooklyn Bar - Stockholm.jpg" alt="Stockholm" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white w3-row-padding">
+                    <p><b>Stockholm</b></p>
+                    <p class="w3-opacity">Fri 27 Sep 2025</p>
+                    <p style="overflow: hidden">We are playing at the prestigous cult venue Brooklyn Bar on Södermalm on a friday! We know you are out for a beer anyway so what's your excuse not to come?</p>
+                    <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                </div>
+            </div>
+            <div class="w3-third w3-margin-bottom" style="display: table-cell;">
+                <img src="../Images/Tour Dates/Melna Piektdiena - Riga.jpg" alt="Riga" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <p><b>Riga</b></p>
+                    <p class="w3-opacity">Sat 28 Sep 2025</p>
+                    <p>We are coming to kill the dogs of riga at the Melna Piektdiena - make sure you are there to witness it!</p>
+                    <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                </div>
+            </div>
+            <div class="w3-third w3-margin-bottom" style="display: table-cell;">
+                <img src="../Images/Tour Dates/Loftas - Vilnius.jpg" alt="Vilnius" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <p><b>Vilnius</b></p>
+                    <p class="w3-opacity">Mon 30 Sep 2025</p>
+                    <p>How to kill the monday blues, Lithuanians? Come and see us at Loftas!</p>
+                    <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                </div>
+            </div>
+        </div>
+        <div class="w3-row-padding" style="display: table;">
+            <div class="w3-third w3-margin-bottom" style="display: table-cell;">
+                <img src="../Images/Tour Dates/Drizzly Grizzly - Gdansk.jpg" alt="Gdansk" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <p><b>Gdansk</b></p>
+                    <p class="w3-opacity">Tue 31 Sep 2025</p>
+                    <p>Gdansk, watch out! A rock and roll-tsunami is sweeping towards you from across the baltic to take the stage at the Drizzly Grizzly...'</p>
+                    <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                </div>
+            </div>
+            <div class="w3-third w3-margin-bottom" style="display: table-cell;">
+                <img src="../Images/Tour Dates/Majestic Music Club - Bratislava.jpg" alt="Bratislava" style="width:100%" class="w3-hover-opacity">
+                <div class="w3-container w3-white">
+                    <p><b>Bratislava</b></p>
+                    <p class="w3-opacity">Wed 1 Okt 2025</p>
+                    <p>Bratislava - your town won't be quiet for very long!'</p>
+                    <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Ticket Modal -->
+<div id="ticketModal" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+        <header class="w3-container w3-teal w3-center w3-padding-32">
+            <span onclick="document.getElementById('ticketModal').style.display='none'"
+                  class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+            <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+        </header>
+        <div class="w3-container">
+            <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 per person</label></p>
+            <input class="w3-input w3-border" type="text" placeholder="How many?">
+            <p><label><i class="fa fa-user"></i> Send To</label></p>
+            <input class="w3-input w3-border" type="text" placeholder="Enter email">
+            <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+            <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+            <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/TourScripts.js"></script>

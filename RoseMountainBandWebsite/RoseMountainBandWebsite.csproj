@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-RoseMountainBandWebsite-b1fba08b-5fd1-4122-bcbd-ad5b0906f76a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Tours\Index - Copy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Images\IMG_1052_EDITED.HEIC" />
+    <None Include="wwwroot\Images\IMG_1137_EDITED_CUT.png" />
+    <None Include="wwwroot\Images\IMG_1436_EDITED.png" />
+    <None Include="wwwroot\Images\Slideshow\Café_Pica_Concert.png" />
+    <None Include="wwwroot\Images\Slideshow\Lake_Profile_Photo.png" />
+    <None Include="wwwroot\Images\Slideshow\Rosersberg_Concert.png" />
+    <None Include="wwwroot\Images\Slideshow\Tanker_Truck_Profile_Photo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.16" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.16" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+</Project>

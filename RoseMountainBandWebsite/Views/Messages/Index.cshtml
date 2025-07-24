@@ -1,0 +1,42 @@
+﻿@model RoseMountainBandWebsite.Models.Message
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- The Contact Section -->
+<div class="w3-container w3-content w3-padding-64" style="width: 50%" id="contact">
+    <h2 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Fan? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+        <div class="w3-col m6 w3-large w3-margin-bottom">
+            <i class="fa fa-map-marker" style="width:30px"></i> Stockholm, Sweden<br>
+            <i class="fa fa-phone" style="width:30px"></i> Phone: +46703698687<br>
+            <i class="fa fa-envelope" style="width:30px"> </i> Email: rosemountainrock@gmail.com<br>
+        </div>
+        <div class="w3-col m6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                    <div class="w3-half">
+                        <!--<label asp-for="SubmitterName" class="control-label"></label>-->
+                        <input asp-for="SubmitterName" class="form-control w3-input w3-border" placeholder="Name" required/>
+                        <span asp-validation-for="SubmitterName" class="text-danger"></span>
+                    </div>
+                    <div class="w3-half">
+                        <!--<label asp-for="SubmitterEmail" class="control-label"></label>-->
+                        <input asp-for="SubmitterEmail" class="form-control w3-input w3-border" placeholder="Email" required/>
+                        <span asp-validation-for="SubmitterEmail" class="text-danger"></span>
+                    </div>
+                </div>
+                <!--<label asp-for="SubmittedText" class="control-label"></label> -->
+                <input asp-for="SubmittedText" class="form-control w3-input w3-border" placeholder="Message" required/>
+                <span asp-validation-for="SubmittedText" class="text-danger"></span>
+                <div class="form-group">
+                    <input type="submit" value="SEND" class="btn btn-primary w3-button w3-black w3-section w3-right" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

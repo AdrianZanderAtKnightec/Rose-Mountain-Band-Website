@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>W3.CSS Template</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Lucida Handwriting', Helvetica, sans-serif;
+            background-image: linear-gradient(white, red);
+        }
+
+        .mySlides {
+            display: none
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="w3-top">
+            <div class="w3-bar w3-black w3-card">
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+                <a class="w3-bar-item w3-button w3-padding-large" asp-area="" asp-controller="Home" asp-action="Index">HOME</a>
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-small" asp-area="" asp-controller="Tours" asp-action="Index">TOUR</a>
+                <a class="w3-bar-item w3-button w3-padding-large w3-hide-small" asp-area="" asp-controller="Messages" asp-action="Index">CONTACT</a>
+                <!--<a class="w3-bar-item w3-button w3-padding-large w3-hide-small w3-right" asp-area="" asp-controller="Messages" asp-action="Index">LOG IN</a>-->
+                <partial name="_LoginPartial"/>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+        <div class="mySlides w3-display-container w3-center">
+            <img src="~/Images/Slideshow/Tree_Profile_Photo.jpg" style="max-width:70%;max-height:70%">
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+            <img src="~/Images/Slideshow/Tanker_Truck_Profile_Photo.png" style="max-width:70%;max-height:70%">
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+            <img src="~/Images/Slideshow/Lake_Profile_Photo.png" style="max-width:70%;max-height:70%">
+        </div>
+
+        <!--
+        <div class="mySlides w3-display-container w3-center">
+            <img src="../Images/Slideshow/Rosersberg_Concert.png" style="max-width:40%;max-height:40%">
+            <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>Rosersberg</h3>
+                <p><b>"You could cut the energy in the air with a knife - a dry up the sweat using a towel."</b></p>
+            </div>
+        </div>
+        <div class="mySlides w3-display-container w3-center">
+            <img src="../Images/Slideshow/Café_Pica_Concert.png" style="max-width:40%;max-height:40%">
+            <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+                <h3>Stora Lappkärrsberget</h3>
+                <p><b>At Café Pica - "...where coffee is only used in Hot Shots."</b></p>
+            </div>
+        </div>
+        -->
+
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+
+    <!-- End Page Content -->
+    </div>
+
+    <!-- Image of location/map -->
+    <div class="w3-center">
+        <img src="~/Images/Footer/Logo.jpg" style="width:100%">
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+        <a href="https://www.facebook.com/RoseMountainOfficial"><i class="fa fa-facebook-official w3-hover-opacity"></i></a>
+        <a href="https://www.instagram.com/rosemountainofficial/"><i class="fa fa-instagram w3-hover-opacity"></i></a>
+        <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </footer>
+    
+    <script src="~/js/_Layout.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- The Band Section -->
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="band">
+    <h2 class="w3-wide" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">ROSE MOUNTAIN</h2>
+    <p class="w3-opacity"><i>We are not great musicians - We are outragous performers!</i></p>
+    <p class="w3-justify">
+        A rock band from Rosersberg with a passion for performing outragesouly energetic- and intense live performances. New EP out now: 
+    </p>
+
+    <iframe style="border-radius:12px" 
+        src="https://open.spotify.com/embed/album/7p8Vtp6j9vdY3x0PGQglLG?utm_source=generator" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+    </iframe>
+
+    <!-- The Tour Section -->
+    <div class="w3-black" id="tour" style="display: block;margin-left: auto;margin-right: auto;margin-top: 2%;margin-bottom: 2%">
+        <div class="w3-container w3-content w3-padding-64" style="max-width:100%">
+            <h2 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">TOUR DATES</h2>
+            <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
+
+            <!--
+            <ul class="w3-ul w3-border w3-white w3-text-grey">
+                <li class="w3-padding">September <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
+                <li class="w3-padding">October <span class="w3-tag w3-red w3-margin-left">Sold out</span></li>
+                <li class="w3-padding">November <span class="w3-badge w3-right w3-margin-right">3</span></li>
+            </ul>
+            -->
+
+            <div class="w3-row-padding w3-padding-32">
+                <div class="w3-third w3-margin-bottom">
+                    <img src="../Images/Tour Dates/Brooklyn Bar - Stockholm.jpg" alt="Stockholm" style="width:100%" class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>Stockholm</b></p>
+                        <p class="w3-opacity">Fri 27 Sep 2025</p>
+                        <p style="overflow: hidden">We are playing at the prestigous cult venue Brooklyn Bar on Södermalm on a friday! We know you are out for a beer anyway so what's your excuse not to come?</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+                <div class="w3-third w3-margin-bottom">
+                    <img src="../Images/Tour Dates/Melna Piektdiena - Riga.jpg" alt="Riga" style="width:100%" class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>Riga</b></p>
+                        <p class="w3-opacity">Sat 28 Sep 2025</p>
+                        <p>We are coming to kill the dogs of riga at the Melna Piektdiena - make sure you are there to witness it!</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+                <div class="w3-third w3-margin-bottom">
+                    <img src="../Images/Tour Dates/Loftas - Vilnius.jpg" alt="Vilnius" style="width:100%" class="w3-hover-opacity">
+                    <div class="w3-container w3-white">
+                        <p><b>Vilnius</b></p>
+                        <p class="w3-opacity">Mon 30 Sep 2025</p>
+                        <p>How to kill the monday blues, Lithuanians? Come and see us at Loftas!</p>
+                        <button class="w3-button w3-black w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2 class="w3-wide w3-padding-32" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">About the Band</h2>
+
+    <div class="w3-white" style="margin: 0% 0% 5% 0">
+        <h3 class="w3-wide w3-padding-32" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold">Members</h3>
+
+        <div class="w3-row">
+            <div class="w3-half">
+                <p><Strong>Lillefot</Strong> - Vocals</p>
+                <img src="../Images/Profile Images/Lillefot.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+            <div class="w3-half">
+                <p><Strong>BigO</Strong> - Lead Guitar</p>
+                <img src="../Images/Profile Images/BigO.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+            <div class="w3-half">
+                <p><Strong>Chelito</Strong> - Rhythm Guitar/Backing Vocals</p>
+                <img src="../Images/Profile Images/Chelito.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+            <div class="w3-half">
+                <p><Strong>Tobeuz</Strong> - Drums/Backing Vocals</p>
+                <img src="../Images/Profile Images/Tobeuz.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:60%">
+            </div>
+        </div>
+
+        <h3 class="w3-wide w3-padding-32" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold">Biography</h3>
+        <p class="w3-justify w3-center w3-padding-16" style="display: block;margin-left: auto;margin-right: auto;width: 80%;margin-top: 0%;margin-bottom: 0%">
+            Rose Mountain was a Swedish rock band that was founded in 2018 in Upplands-Väsby as EarUsJAMM. On the summer of 2019, the band rellocated their base of operations to Rosersberg and later, in the spring of 2020, the band changed its name to Rose Mountain and was then active until August 2022. Imperiet started as Rymdimperiet, a side project to the Swedish punk band Ebba Grön, and included three of its members. When Ebba Grön broke up in 1983, Rymdimperiet re-emerged as Imperiet; with Joakim Thåström (lead vocals, guitar), Anders "Stry" Sjöholm (vocals, guitar) and Gunnar "Gurra" Ljungstedt (drums), all three originally from Ebba Grön. They were joined by Christian Falk (bass) and Per Hägglund (sax, keyboards). Stry left in 1984 and Gurra the following year. Gurra was replaced by Fred Asp on the drums. In 1987 Per Hägglund left and Imperiet disbanded in 1988.
+
+            Imperiet's sound was inspired by punk, rock and synthpop. Their lyrics were left-wing and anti-imperialist; songs like "C. C. Cowboys", "Alltid rött, alltid rätt" (Always Red, Always Right), and "Var e vargen" (Where's the wolf) were inspired by Russian Communist poet Mayakovsky.
+
+            Mainly successful in Sweden and Scandinavia, Imperiet also toured overseas, playing in the United States, Cuba, Central America and South America. In 1988, Imperiet released their only English language album, called Imperiet. It featured translated versions of their old songs. The album had an intensive promotional European tour, but was only popular in Sweden. This put an end to plans for an international career.
+
+            Their original name Rymdimperiet (meaning The Galactic Empire, literally "The Space Empire"), was taken from the Star Wars movie The Empire Strikes Back (1980), the Swedish title being Rymdimperiet slår tillbaka.
+        </p>
+    </div>
+</div>
