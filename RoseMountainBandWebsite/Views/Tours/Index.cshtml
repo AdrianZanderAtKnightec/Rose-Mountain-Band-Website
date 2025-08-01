@@ -1,7 +1,18 @@
 ﻿@model IEnumerable<RoseMountainBandWebsite.Models.Tour>
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
     ViewData["Title"] = "Tour Page";
+}
+
+<!-- The Tour Section -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="w3-container w3-content w3-center" style="width: 30%; margin-top: 2%;" id="contact">
+        <a class="w3-button w3-padding-large w3-red w3-center" asp-area="" asp-controller="Tours" asp-action="Create">ADD NEW TOURS/CONCERTS</a>
+    </div>
 }
 
 <!-- The Tour Section -->
@@ -66,6 +77,71 @@
         </div>
     </div>
 </div>
+
+<!--
+<div class="w3-black" id="tour" style="display: block; margin-left: auto; margin-right: auto; width: 40%; margin-top: 2%; margin-bottom: 2%;">
+    <h2 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif; font-weight: bold; padding-top: 5%;">TOUR DATES</h2>
+    <p class="w3-opacity w3-center"><i>Remember to book your tickets!</i></p><br>
+    
+    <div class="" style="max-width:100%; display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr; row-gap: 5%; column-gap: 5%; padding-left: 5%; padding-right: 5%; padding-bottom: 5%; overflow: auto">
+        <div class="" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="">
+                <img src="../Images/Tour Dates/Brooklyn Bar - Stockholm.jpg" alt="Stockholm" style="width:100%; height:100%" class="w3-hover-opacity">
+            </div>
+            <div class="w3-container w3-white" style="display: flex; flex-direction: column; flex: 1;">
+                <p><b>Stockholm</b></p>
+                <p class="w3-opacity">Fri 27 Sep 2025</p>
+                <p style="overflow: hidden">We are playing at the prestigous cult venue Brooklyn Bar on Södermalm on a friday! We know you are out for a beer anyway so what's your excuse not to come?</p>
+                <button class="w3-button w3-black w3-margin-bottom" style="margin-top: auto;" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="">
+                <img src="../Images/Tour Dates/Melna Piektdiena - Riga.jpg" alt="Riga" style="width:100%; height:100%" class="w3-hover-opacity">
+            </div>
+            <div class="w3-container w3-white" style="display: flex; flex-direction: column; flex: 1;">
+                <p><b>Riga</b></p>
+                <p class="w3-opacity">Sat 28 Sep 2025</p>
+                <p>We are coming to kill the dogs of riga at the Melna Piektdiena - make sure you are there to witness it!</p>
+                <button class="w3-button w3-black w3-margin-bottom" style="margin-top: auto;" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: column; width: 100%">
+            <div class="">
+                <img src="../Images/Tour Dates/Loftas - Vilnius.jpg" alt="Vilnius" style="width:100%; height:100%" class="w3-hover-opacity">
+            </div>
+            <div class="w3-container w3-white" style="display: flex; flex-direction: column; flex: 1;">
+                <p><b>Vilnius</b></p>
+                <p class="w3-opacity">Mon 30 Sep 2025</p>
+                <p>How to kill the monday blues, Lithuanians? Come and see us at Loftas!</p>
+                <button class="w3-button w3-black w3-margin-bottom" style="margin-top: auto;" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="">
+                <img src="../Images/Tour Dates/Drizzly Grizzly - Gdansk.jpg" alt="Gdansk" style="width:100%; height:100%" class="w3-hover-opacity">
+            </div>
+            <div class="w3-container w3-white" style="display: flex; flex-direction: column; flex: 1;">
+                <p><b>Gdansk</b></p>
+                <p class="w3-opacity">Tue 31 Sep 2025</p>
+                <p>Gdansk, watch out! A rock and roll-tsunami is sweeping towards you from across the baltic to take the stage at the Drizzly Grizzly...'</p>
+                <button class="w3-button w3-black w3-margin-bottom" style="margin-top: auto;" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            </div>
+        </div>
+        <div class="" style="display: flex; flex-direction: column; width: 100%;">
+            <div class="">
+                <img src="../Images/Tour Dates/Majestic Music Club - Bratislava.jpg" alt="Bratislava" style="width:100%; height:100%" class="w3-hover-opacity">
+            </div>
+            <div class="w3-container w3-white" style="display: flex; flex-direction: column; flex: 1;">
+                <p><b>Bratislava</b></p>
+                <p class="w3-opacity">Wed 1 Okt 2025</p>
+                <p>Bratislava - your town won't be quiet for very long!'</p>
+                <button class="w3-button w3-black w3-margin-bottom" style="margin-top: auto;" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+            </div>
+        </div>
+    </div>
+</div>
+-->
 
 <!-- Ticket Modal -->
 <div id="ticketModal" class="w3-modal">

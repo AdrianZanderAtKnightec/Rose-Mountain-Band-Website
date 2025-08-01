@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RoseMountainBandWebsite")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c0276c46bef27b9f69c13d562f501f27272e879")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59ba4c1579b0b1268a85195f5bd54cae8a708e60")]
 [assembly: System.Reflection.AssemblyProductAttribute("RoseMountainBandWebsite")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RoseMountainBandWebsite")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -4,43 +4,63 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<div class="w3-container w3-content w3-padding-64" style="width: 100%" id="contact">
+    <h2 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif;font-weight: bold;">ADD TOUR</h2>
+    <p class="w3-opacity w3-center"><i>Create Tours and add Concerts to them!</i></p>
 
-<h4>Tour</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="StartDate" class="control-label"></label>
-                <input asp-for="StartDate" class="form-control" />
-                <span asp-validation-for="StartDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="EndDate" class="control-label"></label>
-                <input asp-for="EndDate" class="form-control" />
-                <span asp-validation-for="EndDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <div class="w3-center">
+        <a asp-action="Index">Back to List</a>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+    <div class="w3-black" id="tour" style="display: block; margin-left: auto; margin-right: auto; width: 70%; margin-top: 2%; margin-bottom: 2%;">
+        <h3 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif; font-weight: bold; padding-top: 5%;">ADD TOUR</h3>
+        <p class="w3-opacity w3-center"><i>You want to create a new set of  concerts? Add a Tour!</i></p><br>
+    
+        <div class="w3-container w3-content w3-padding-32" style="width: 100%">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger" style="color: red; font-weight: bold;" role="alert">Fill in all the boxes in the form.</div>
+                <label><b>Name</b></label>
+                <div>
+                    <div>
+                        <input asp-for="Name" class="form-control w3-input w3-border" autocomplete="Name" aria-required="true" placeholder="Name" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                </div>
+                <label><b>Description</b></label>
+                <div>
+                    <div>
+                        <!--<textarea rows="2" cols="20" name="usrtxt" wrap="hard"/>-->
+                        <input asp-for="Description" class="form-control w3-input w3-border" autocomplete="Description" aria-required="true" placeholder="Description"/>
+                        <span asp-validation-for="Description" class="text-danger" style="display: inline-block;"></span>
+                    </div>
+                </div>
+                <div class="w3-row-padding" style="margin:0 -16px 8px -16px">
+                    <div class="w3-half">
+                        <label><b>Start Date</b></label>
+                        <div>
+                            <div>
+                                <input asp-for="StartDate" class="form-control w3-input w3-border" autocomplete="Start Date" aria-required="true" placeholder="Start Date"/>
+                                <span asp-validation-for="StartDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w3-half">
+                        <label><b>End Date</b></label>
+                        <div>
+                            <div>
+                                <input asp-for="EndDate" class="form-control w3-input w3-border" autocomplete="End Date" aria-required="true" placeholder="End Date"/>
+                                <span asp-validation-for="EndDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w3-center">
+                    <button id="tour-submit" type="submit" class="btn btn-primary w3-button w3-red w3-section">ADD TOUR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
 </div>
 
 @section Scripts {
