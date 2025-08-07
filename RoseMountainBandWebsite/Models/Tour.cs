@@ -1,4 +1,6 @@
-﻿namespace RoseMountainBandWebsite.Models
+﻿using System;
+
+namespace RoseMountainBandWebsite.Models
 {
     public class Tour
     {
@@ -7,10 +9,10 @@
         public DateTime EndDate { get; set; }
         public String Name { get; set; }
         public String Description { get; set; }
-        public Concert[] Concerts { get; set; }
 
         public Tour() {
 
         }
+
     }
 }
