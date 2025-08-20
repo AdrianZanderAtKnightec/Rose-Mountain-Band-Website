@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RoseMountainBandWebsite.Data;
 using RoseMountainBandWebsite.Models;
+using RoseMountainBandWebsite.ViewModel;
 
 namespace RoseMountainBandWebsite.Controllers
 {
     public class ToursController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private TourConcertViewModel tourConcertViewModelWithPreviouslySubmittedTours;
 
         public ToursController(ApplicationDbContext context)
         {
@@ -44,9 +46,22 @@ namespace RoseMountainBandWebsite.Controllers
         }
 
         // GET: Tours/Create
-        public IActionResult Create()
+        /*public IActionResult Create()
         {
             return View();
+        }*/
+
+        // GET: Tours/Create
+        public async Task<IActionResult> Create()
+        {
+            getTours();
+            return View(tourConcertViewModelWithPreviouslySubmittedTours);
+        }
+
+        private async void getTours()
+        {
+            tourConcertViewModelWithPreviouslySubmittedTours = new TourConcertViewModel();
+            tourConcertViewModelWithPreviouslySubmittedTours.PreviouslySubmittedTours = await _context.Tour.ToListAsync();
         }
 
         // POST: Tours/Create
@@ -54,15 +69,17 @@ namespace RoseMountainBandWebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,StartDate,EndDate,Name,Description")] Tour tour)
+        public async Task<IActionResult> Create([Bind("SubmittedTour.Id, SubmittedTour.StartDate, SubmittedTour.EndDate, SubmittedTour.Name, SubmittedTour.Description")] TourConcertViewModel tourConcertViewModelWithNewTour)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tour);
+                _context.Add(tourConcertViewModelWithNewTour.SubmittedTour);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
-            return View(tour);
+            getTours();
+            Console.WriteLine(tourConcertViewModelWithPreviouslySubmittedTours.PreviouslySubmittedTours.ElementAt(0).Name);
+            return View(tourConcertViewModelWithPreviouslySubmittedTours);
         }
 
         // GET: Tours/Edit/5

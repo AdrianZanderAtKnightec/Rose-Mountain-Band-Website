@@ -7,14 +7,30 @@ namespace RoseMountainBandWebsite.ViewModel
 
     public class TourConcertViewModel
     {
-        public List<Tour> PreviouslySubmittedTours;
+        public List<Tour> PreviouslySubmittedTours { get; set; }
         public Tour SubmittedTour { get; set; }
         public Concert SubmittedToursConcert { get; set; }
 
-        public TourConcertViewModel(List<Tour> PreviouslySubmittedTours, Concert SubmittedToursConcert)
+        public TourConcertViewModel()
+        {
+
+        }
+
+        /*
+        public TourConcertViewModel(List<Tour> PreviouslySubmittedTours)
         {
             this.PreviouslySubmittedTours = PreviouslySubmittedTours;
+        }
+
+        public TourConcertViewModel(Tour SubmittedTour)
+        {
+            this.SubmittedTour = SubmittedTour;
+        }
+
+        public TourConcertViewModel(Concert SubmittedToursConcert)
+        {
             this.SubmittedToursConcert = SubmittedToursConcert;
         }
+        */
     }
 }
