@@ -24,15 +24,15 @@
                 <label><b>Name</b></label>
                 <div>
                     <div>
-                        <input asp-for="@Model.SubmittedTour.Name" class="form-control w3-input w3-border" autocomplete="Name" aria-required="true" placeholder="Name" />
-                        <span asp-validation-for="@Model.SubmittedTour.Name" class="text-danger"></span>
+                        <input asp-for="@Model.NewTour.Name" class="form-control w3-input w3-border" autocomplete="Name" aria-required="true" placeholder="Name" />
+                        <span asp-validation-for="@Model.NewTour.Name" class="text-danger"></span>
                     </div>
                 </div>
                 <label><b>Description</b></label>
                 <div>
                     <div>
-                        <input asp-for="@Model.SubmittedTour.Description" class="form-control w3-input w3-border" autocomplete="Description" aria-required="true" placeholder="Description" />
-                        <span asp-validation-for="@Model.SubmittedTour.Description" class="text-danger" style="display: inline-block;"></span>
+                        <input asp-for="@Model.NewTour.Description" class="form-control w3-input w3-border" autocomplete="Description" aria-required="true" placeholder="Description" />
+                        <span asp-validation-for="@Model.NewTour.Description" class="text-danger" style="display: inline-block;"></span>
                     </div>
                 </div>
                 <div class="w3-row-padding" style="margin:0  -16px 8px -16px">
@@ -40,8 +40,8 @@
                         <label><b>Start Date</b></label>
                         <div>
                             <div>
-                                <input asp-for="@Model.SubmittedTour.StartDate" class="form-control w3-input w3-border" autocomplete="Start Date" aria-required="true" placeholder="Start Date" />
-                                <span asp-validation-for="@Model.SubmittedTour.StartDate" class="text-danger"></span>
+                                <input asp-for="@Model.NewTour.StartDate" class="form-control w3-input w3-border" autocomplete="Start Date" aria-required="true" placeholder="Start Date" />
+                                <span asp-validation-for="@Model.NewTour.StartDate" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                         <label><b>End Date</b></label>
                         <div>
                             <div>
-                                <input asp-for="@Model.SubmittedTour.EndDate" class="form-control w3-input w3-border" autocomplete="End Date" aria-required="true" placeholder="End Date" />
-                                <span asp-validation-for="@Model.SubmittedTour.EndDate" class="text-danger"></span>
+                                <input asp-for="@Model.NewTour.EndDate" class="form-control w3-input w3-border" autocomplete="End Date" aria-required="true" placeholder="End Date" />
+                                <span asp-validation-for="@Model.NewTour.EndDate" class="text-danger"></span>
                             </div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
 
     <div class="w3-black" id="tour" style="display: block; margin-left: auto; margin-right: auto; width: 70%; margin-top: 2%; margin-bottom: 2%;">
         <h3 class="w3-wide w3-center" style="font-family: 'Lucida Handwriting', Helvetica, sans-serif; font-weight: bold; padding-top: 5%;">ADD CONCERT</h3>
-        @if (@Model.PreviouslySubmittedTours.Count < 1)
+        <!--@if (@Model.PreviouslySubmittedTours.Count < 1) -->
         {
             <p class="w3-opacity w3-center"><i style="color: red; font-weight: bold;">You must add a Tour before you can add a concert!</i></p><br>
         }
@@ -82,7 +82,7 @@
                         <div>
                             <table class="table w3-table w3-striped w3-centered w3-bordered w3-border w3-hoverable w3-white">
                                 <tbody>
-                                    @foreach (var item in @Model.PreviouslySubmittedTours)
+                                    @foreach (var item in @Model.Tour)
                                     {
                                         <tr>
                                             <td>
@@ -98,14 +98,14 @@
                     <div>
                         <div>
                             <input asp-for="@Model.SubmittedToursConcert.Location" class="form-control w3-input w3-border" autocomplete="Name" aria-required="true" placeholder="Name" />
-                            <span asp-validation-for="@Model.SubmittedToursConcert.Location" class="text-danger"></span>
+                            <span asp-validation-for="@Model.NewlySubmittedConcert.Location" class="text-danger"></span>
                         </div>
                     </div>
                     <label><b>Description</b></label>
                     <div>
                         <div>
                             <input asp-for="@Model.SubmittedToursConcert.Description" class="form-control w3-input w3-border" autocomplete="Description" aria-required="true" placeholder="Description" />
-                            <span asp-validation-for="@Model.SubmittedToursConcert.Description" class="text-danger" style="display: inline-block;"></span>
+                            <span asp-validation-for="@Model.NewlySubmittedConcert.Description" class="text-danger" style="display: inline-block;"></span>
                         </div>
                     </div>
                     <div>
@@ -113,7 +113,7 @@
                         <div>
                             <div>
                                 <input asp-for="@Model.SubmittedToursConcert.Date" class="form-control w3-input w3-border" autocomplete="End Date" aria-required="true" placeholder="End Date" />
-                                <span asp-validation-for="@Model.SubmittedToursConcert.Date" class="text-danger"></span>
+                                <span asp-validation-for="@Model.NewlySubmittedConcert.Date" class="text-danger"></span>
                             </div>
                         </div>
                     </div>

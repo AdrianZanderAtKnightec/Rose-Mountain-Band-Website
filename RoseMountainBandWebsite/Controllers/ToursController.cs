@@ -14,7 +14,6 @@ namespace RoseMountainBandWebsite.Controllers
     public class ToursController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private TourConcertViewModel tourConcertViewModelWithPreviouslySubmittedTours;
 
         public ToursController(ApplicationDbContext context)
         {
@@ -24,11 +23,33 @@ namespace RoseMountainBandWebsite.Controllers
         // GET: Tours
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tour.ToListAsync());
+            List<Tour> Tours = await _context.Tour.ToListAsync();
+            List<Concert> Concerts = await _context.Concert.ToListAsync();
+            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
+        }
+
+        private TourConcertViewModel packageToursAndConcertsIntoViewModel(List<Tour> Tours, List<Concert> Concerts)
+        {
+            TourConcertViewModel TCVM = new TourConcertViewModel();
+            TCVM.Tours = Tours;
+            foreach (Tour Tour in Tours)
+            {
+                List<Concert> ConcertsForCurrentTour = new List<Concert>();
+                foreach (Concert Concert in Concerts)
+                {
+                    if (Concert.TourId == Tour.Id)
+                    {
+                        ConcertsForCurrentTour.Add(Concert);
+                    }
+                }
+
+                TCVM.Concerts.Add(ConcertsForCurrentTour);
+            }
+            return TCVM;
         }
 
         // GET: Tours/Details/5
-        public async Task<IActionResult> Details(int? id)
+        /*public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -43,7 +64,7 @@ namespace RoseMountainBandWebsite.Controllers
             }
 
             return View(tour);
-        }
+        }*/
 
         // GET: Tours/Create
         /*public IActionResult Create()
@@ -54,36 +75,31 @@ namespace RoseMountainBandWebsite.Controllers
         // GET: Tours/Create
         public async Task<IActionResult> Create()
         {
-            getTours();
-            return View(tourConcertViewModelWithPreviouslySubmittedTours);
+            List<Tour> Tours = await _context.Tour.ToListAsync();
+            List<Concert> Concerts = await _context.Concert.ToListAsync();
+            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
         }
 
-        private async void getTours()
-        {
-            tourConcertViewModelWithPreviouslySubmittedTours = new TourConcertViewModel();
-            tourConcertViewModelWithPreviouslySubmittedTours.PreviouslySubmittedTours = await _context.Tour.ToListAsync();
-        }
 
         // POST: Tours/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubmittedTour.Id, SubmittedTour.StartDate, SubmittedTour.EndDate, SubmittedTour.Name, SubmittedTour.Description")] TourConcertViewModel tourConcertViewModelWithNewTour)
+        public async Task<IActionResult> Create([Bind("NewTour.Id, NewTour.StartDate, NewTour.EndDate, NewTour.Name, NewTour.Description")] TourConcertViewModel TCVM)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(tourConcertViewModelWithNewTour.SubmittedTour);
+                _context.Add(TCVM.NewTour);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Create));
             }
-            getTours();
-            Console.WriteLine(tourConcertViewModelWithPreviouslySubmittedTours.PreviouslySubmittedTours.ElementAt(0).Name);
-            return View(tourConcertViewModelWithPreviouslySubmittedTours);
+
+            return View(TCVM);
         }
 
         // GET: Tours/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        /*public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -96,12 +112,12 @@ namespace RoseMountainBandWebsite.Controllers
                 return NotFound();
             }
             return View(tour);
-        }
+        }*/
 
         // POST: Tours/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+        /*[HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,StartDate,EndDate,Name,Description")] Tour tour)
         {
@@ -131,16 +147,17 @@ namespace RoseMountainBandWebsite.Controllers
                 return RedirectToAction(nameof(Index));
             }
             return View(tour);
-        }
+        }*/
 
         // POST: Tours/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddConcertToTour(int id, [Bind("Id,Location,Date,Description")] Concert concert)
+        public async Task<IActionResult> AddConcertToTour(int TourId, [Bind("NewlySubmittedConcert.Id, NewlySubmittedConcert.TourId, NewlySubmittedConcert.Location, NewlySubmittedConcert.Date, NewlySubmittedConcert.Description")] TourConcertViewModel TCVMWithNewConcert)
         {
-            if (id != concert.Id)
+
+            if (TourId != TCVMWithNewConcert.NewConcert.TourId)
             {
                 return NotFound();
             }
@@ -149,12 +166,17 @@ namespace RoseMountainBandWebsite.Controllers
             {
                 try
                 {
-                    _context.Update(concert);
+                    //TourConcertViewModel TCVM = await _context.TCVM.FindAsync(TourId);
+                    //TCVM.Concerts.Add(TCVMWithNewConcert.NewlySubmittedConcert);
+                    //TCVM.Concerts.Add(TCVMWithNewConcert.NewlySubmittedConcert);
+
+
+                    _context.Update(TCVMWithNewConcert.NewConcert);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TourExists(concert.Id))
+                    if (!TourExists(TCVMWithNewConcert.NewConcert.TourId))
                     {
                         return NotFound();
                     }
@@ -165,11 +187,14 @@ namespace RoseMountainBandWebsite.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+
+            List<Tour> Tours = await _context.Tour.ToListAsync();
+            List<Concert> Concerts = await _context.Concert.ToListAsync();
+            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
         }
 
         // GET: Tours/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        /*public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -199,11 +224,11 @@ namespace RoseMountainBandWebsite.Controllers
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
+        }*/
 
-        private bool TourExists(int id)
+        private bool TourExists(int TourId)
         {
-            return _context.Tour.Any(e => e.Id == id);
+            return _context.Tour.Any(e => e.Id == TourId);
         }
     }
 }

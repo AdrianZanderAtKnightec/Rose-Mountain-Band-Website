@@ -3,34 +3,13 @@ using RoseMountainBandWebsite.Models;
 
 namespace RoseMountainBandWebsite.ViewModel
 {
-
-
     public class TourConcertViewModel
     {
-        public List<Tour> PreviouslySubmittedTours { get; set; }
-        public Tour SubmittedTour { get; set; }
-        public Concert SubmittedToursConcert { get; set; }
+        public List<Tour> Tours { get; set; }
+        public List<List<Concert>> Concerts { get; set; }
 
-        public TourConcertViewModel()
-        {
+        public Tour NewTour { get; set; }
+        public Concert NewConcert { get; set; }
 
-        }
-
-        /*
-        public TourConcertViewModel(List<Tour> PreviouslySubmittedTours)
-        {
-            this.PreviouslySubmittedTours = PreviouslySubmittedTours;
-        }
-
-        public TourConcertViewModel(Tour SubmittedTour)
-        {
-            this.SubmittedTour = SubmittedTour;
-        }
-
-        public TourConcertViewModel(Concert SubmittedToursConcert)
-        {
-            this.SubmittedToursConcert = SubmittedToursConcert;
-        }
-        */
     }
 }

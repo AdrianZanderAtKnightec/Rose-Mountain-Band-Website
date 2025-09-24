@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.CodeAnalysis.Editing;
+using System;
+
 
 namespace RoseMountainBandWebsite.Models
 {
@@ -11,7 +13,7 @@ namespace RoseMountainBandWebsite.Models
         public String Description { get; set; }
 
         public Tour() {
-
+                    
         }
 
     }
