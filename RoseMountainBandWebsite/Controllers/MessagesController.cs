@@ -68,7 +68,7 @@ namespace RoseMountainBandWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
-                Debug.WriteLine("--------------------------------------------------Model is valid----------------------------------------------------"); //FIX HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEERE!
+                Debug.WriteLine("--------------------------------------------------Model is valid----------------------------------------------------");
                 _context.Add(message);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

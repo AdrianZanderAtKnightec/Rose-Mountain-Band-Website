@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using RoseMountainBandWebsite.Data;
 using RoseMountainBandWebsite.Models;
 using RoseMountainBandWebsite.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace RoseMountainBandWebsite.Controllers
 {
@@ -21,17 +22,20 @@ namespace RoseMountainBandWebsite.Controllers
         }
 
         // GET: Tours
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(TourConcertViewModel TCVM)
         {
             List<Tour> Tours = await _context.Tour.ToListAsync();
             List<Concert> Concerts = await _context.Concert.ToListAsync();
-            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
+            TourConcertViewModel TCVMWithLists = packageToursAndConcertsIntoViewModel(Tours, Concerts);
+            TCVM.Tours = TCVMWithLists.Tours;
+            TCVM.Concerts = TCVMWithLists.Concerts;
+            return View(TCVM);
         }
 
         private TourConcertViewModel packageToursAndConcertsIntoViewModel(List<Tour> Tours, List<Concert> Concerts)
         {
-            TourConcertViewModel TCVM = new TourConcertViewModel();
-            TCVM.Tours = Tours;
+            TourConcertViewModel TCVM = new();
+            TCVM.Concerts = new();
             foreach (Tour Tour in Tours)
             {
                 List<Concert> ConcertsForCurrentTour = new List<Concert>();
@@ -73,11 +77,16 @@ namespace RoseMountainBandWebsite.Controllers
         }*/
 
         // GET: Tours/Create
-        public async Task<IActionResult> Create()
+        public async Task<IActionResult> Create(TourConcertViewModel TCVM)
         {
             List<Tour> Tours = await _context.Tour.ToListAsync();
             List<Concert> Concerts = await _context.Concert.ToListAsync();
-            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
+            TourConcertViewModel TCVMWithLists = packageToursAndConcertsIntoViewModel(Tours, Concerts);
+            TCVM.Tours = TCVMWithLists.Tours;
+            TCVM.Concerts = TCVMWithLists.Concerts;
+            TCVM.NewTour = new Tour();
+            TCVM.NewConcert = new Concert();
+            return View(TCVM);
         }
 
 
@@ -86,16 +95,26 @@ namespace RoseMountainBandWebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("NewTour.Id, NewTour.StartDate, NewTour.EndDate, NewTour.Name, NewTour.Description")] TourConcertViewModel TCVM)
+        //public async Task<IActionResult> AddTour([Bind("NewTour.Id,NewTour.Name,NewTour.Description,NewTour.StartDate,NewTour.EndDate")] TourConcertViewModel TCVM)
+        public async Task<IActionResult> AddTour([Bind("Tours,Concerts,NewTour,NewConcert")] TourConcertViewModel TCVM)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(TCVM.NewTour);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Create));
-            }
+            Debug.WriteLine("--------------------------------------------------Adding Tour----------------------------------------------------");
+            //if (ModelState.IsValid)
+            //{
+            Debug.WriteLine(TCVM.NewTour);
+            Debug.WriteLine(TCVM.NewTour.Name);
+            Debug.WriteLine(TCVM.NewTour.Id);
+            Debug.WriteLine(TCVM.NewTour.Description);
+            Debug.WriteLine(TCVM.NewTour.StartDate);
+            Debug.WriteLine(TCVM.NewTour.EndDate);
+            
+            Debug.WriteLine("--------------------------------------------------Model is valid----------------------------------------------------");
+            _context.Add(TCVM.NewTour);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Create));
+            //}
 
-            return View(TCVM);
+            //return RedirectToAction(nameof(Create));
         }
 
         // GET: Tours/Edit/5
@@ -154,7 +173,7 @@ namespace RoseMountainBandWebsite.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddConcertToTour(int TourId, [Bind("NewlySubmittedConcert.Id, NewlySubmittedConcert.TourId, NewlySubmittedConcert.Location, NewlySubmittedConcert.Date, NewlySubmittedConcert.Description")] TourConcertViewModel TCVMWithNewConcert)
+        public async Task<IActionResult> AddConcert(int TourId, [Bind("NewConcert.Id,NewConcert.TourId,NewConcert.Location,NewConcert.Date,NewConcert.Description")] TourConcertViewModel TCVMWithNewConcert)
         {
 
             if (TourId != TCVMWithNewConcert.NewConcert.TourId)
@@ -185,12 +204,10 @@ namespace RoseMountainBandWebsite.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Create));
             }
 
-            List<Tour> Tours = await _context.Tour.ToListAsync();
-            List<Concert> Concerts = await _context.Concert.ToListAsync();
-            return View(packageToursAndConcertsIntoViewModel(Tours, Concerts));
+            return RedirectToAction(nameof(Create));
         }
 
         // GET: Tours/Delete/5
